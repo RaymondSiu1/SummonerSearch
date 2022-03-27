@@ -1,0 +1,129 @@
+
+:root {
+  --discordDark: #2C2F33;
+  --white: rgb(236, 236, 236);
+}
+
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 9pt;
+  font-weight: var(--font-weight);
+  transition: background 0.3s ease-in-out, color 0.6s ease-in-out
+}
+
+body.light { 
+  --background-color: var(--white);
+  --text-color: var(--discordDark);
+  --font-weight: 400;
+}
+
+body.dark { 
+  --background-color: var(--discordDark);
+  --text-color: var(--white);
+  --font-weight: 500;
+}
+
+.dark-mode {
+  background-color: #2C2F33;
+  color: white;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Dark mode slider*/
+.slider {
+  border-radius: 34px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+/* end Dark Mode Slider */
+* {
+  box-sizing: border-box;
+}
+
+Input[type="text"] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  width: 30%;
+  background: #f1f1f1;
+}
+
+button {
+
+  width: 5%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0b7dda;
+}
+
+form.form::after {
+  content: "";
+  clear: both;
+  display: table;
+}

@@ -6,7 +6,7 @@ var app = express();
 
 app.use(cors());
 
-const RIOT_API_KEY = "RGAPI-9e97edc5-5aee-4a71-848e-ffdf73b5cc73";
+const RIOT_API_KEY = "RGAPI-36e24017-ecda-440c-88ed-40cbe4074432";
 
 function getPlayerPUUID(playerName) {
     return axios
@@ -23,10 +23,32 @@ function getPlayerPUUID(playerName) {
       .catch((err) => err);
   }
 
+
+  app.get('/summonerData', async (req, res) => {
+    const playerName = req.query.username;
+    const API_CALL =
+     "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" +
+      playerName +
+      "?api_key=" +
+      RIOT_API_KEY;
+    //GET API_CALL
+    //gives list of game IDs
+    const summonerData = await axios
+      .get(API_CALL)
+      .then((reponse) => reponse.data)
+      .catch((err) => err);
+    console.log(summonerData);
+
+      //save info above in to array, give array as JSON reponse to user
+    // [Game1Object, Game2Object, ...]
+  res.json(summonerData);
+});
+
+
 //GET past5Games
 //GET localhost:3000/past5Games
 app.get('/past5Games', async (req, res) => {
-    const playerName = "iShootPlasma";
+    const playerName = req.query.username;
     const PUUID = await getPlayerPUUID(playerName);
     const API_CALL =
       "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/" +
