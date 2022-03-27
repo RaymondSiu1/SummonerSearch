@@ -69,7 +69,7 @@ console.log(gameList);
           </>
         ) : (
           <>
-            <h3>No Player Data</h3>
+            <h3>Enter a summoner name and click the button to retrieve data.</h3>
           </>
         )
       }
@@ -105,7 +105,6 @@ console.log(gameList);
       </>
     :
     <>
-    <p>No Data</p>
     </>
     }
     </div>
