@@ -7,6 +7,8 @@ function App() {
   const [searchText, setSearchText] = useState("");
   const [playerData, setPlayerData] = useState({});
   const [gameList, setGameList] = useState([]);
+  const [blueTeam, setBlueTeam] = useState([]);
+  const [redTeam, setRedTeam] = useState([]);
 
  
  function searchForPlayer(event) {
@@ -81,7 +83,12 @@ console.log(gameList);
         <h2>Game {index + 1} {gameData.info.gameMode}</h2>
         <div>
           {gameData.info.participants.map((data, participantIndex) => 
-            <p>{participantIndex + 1 > 5 &&  <h2>    team 2   </h2>      }{data.summonerName}<img
+            <p>
+            {participantIndex + 1 == 1 && data.win.toString() == "true"  && <h3>Blue Side Victory</h3>}
+            {participantIndex + 1 == 1 && data.win.toString() == "false"  && <h3>Blue Side Defeat</h3>}
+            {participantIndex + 1 == 6 && data.win.toString() == "true"  && <h3>Red Side Victory</h3>}
+            {participantIndex + 1 == 6 && data.win.toString() == "false"  && <h3>Red Side Defeat</h3>}
+            {data.summonerName} <img
             width="32"
             height="32"
             src={
@@ -89,7 +96,7 @@ console.log(gameList);
               data.championName +
               ".png"
             }
-          ></img> KDA: {data.kills} / {data.deaths} / {data.assists}, Victory: {data.win.toString()}</p>)
+          ></img>  KDA: {data.kills} / {data.deaths} / {data.assists}</p>)
          }
         </div>
         </>
